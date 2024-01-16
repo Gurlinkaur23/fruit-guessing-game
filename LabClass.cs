@@ -72,7 +72,7 @@ namespace LabAssignment_03
                 StringBuilder hiddenWord = DisplayHiddenString(randomFruit);
 
                 bool isTrue = true;
-                uint maxCorrectGuesses = 10;
+                int maxCorrectGuesses = 10;
 
                 Console.WriteLine("Welcome to the Fruit Guessing Game!");
                 Console.WriteLine();
@@ -86,7 +86,7 @@ namespace LabAssignment_03
                     string userInput = Console.ReadLine().ToLower();
 
                     // Validate the user input
-                    if (!ValidateUserInput(userInput))
+                    if (!ValidateUserInput(userInput) && maxCorrectGuesses > 0)
                     {
                         maxCorrectGuesses--;
                         continue;
@@ -110,7 +110,7 @@ namespace LabAssignment_03
 
                     }
 
-                    if (isIncorrect) maxCorrectGuesses--;
+                    if (isIncorrect && maxCorrectGuesses > 0) maxCorrectGuesses--;
 
                     // Implementing game over logic
                     if (hiddenWord.ToString() == randomFruit)
